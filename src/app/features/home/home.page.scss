@@ -16,10 +16,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// ===================================
-// HEADER STYLES
-// ===================================
-
 .corporate-header {
   background: $primary-brand-gradient;
   box-shadow: $shadow-lg;
@@ -54,10 +50,6 @@ body {
   }
 }
 
-// ===================================
-// CONTENT AREA
-// ===================================
-
 ion-content {
   --background: linear-gradient(180deg, #{$gray-50} 0%, #{$white} 100%);
   --padding-start: #{$spacing-lg};
@@ -70,10 +62,6 @@ ion-content {
     --padding-end: #{$spacing-2xl};
   }
 }
-
-// ===================================
-// BUSINESS DIRECTORY
-// ===================================
 
 .business-directory {
   background: transparent;
@@ -95,10 +83,6 @@ ion-content {
     }
   }
 }
-
-// ===================================
-// BUSINESS CARD
-// ===================================
 
 .business-card {
   @include card-base;
@@ -156,10 +140,6 @@ ion-content {
   }
 }
 
-// ===================================
-// PROFILE THUMBNAIL
-// ===================================
-
 .profile-thumbnail {
   --size: 64px;
   --border-radius: #{$radius-xl};
@@ -204,10 +184,6 @@ ion-content {
   }
 }
 
-// ===================================
-// CONTACT INFO
-// ===================================
-
 .contact-info {
   flex: 1;
   cursor: pointer;
@@ -228,10 +204,6 @@ ion-content {
     }
   }
 }
-
-// ===================================
-// ACTION BUTTON
-// ===================================
 
 .action-button {
   @include button-reset;
@@ -277,10 +249,6 @@ ion-content {
   }
 }
 
-// ===================================
-// LOADING INDICATOR
-// ===================================
-
 .loading-indicator {
   @include flex-center;
 
@@ -294,10 +262,6 @@ ion-content {
     height: 56px;
   }
 }
-
-// ===================================
-// ANIMATIONS
-// ===================================
 
 @keyframes heartbeat {
   0% {
@@ -337,10 +301,6 @@ ion-content {
   }
 }
 
-// ===================================
-// UTILITY CLASSES
-// ===================================
-
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -357,9 +317,6 @@ ion-content {
   @include gradient-text(linear-gradient(135deg, $secondary-brand 0%, $secondary-brand-light 100%));
 }
 
-// ===================================
-// RESPONSIVE ENHANCEMENTS
-// ===================================
 
 @media (min-width: 1200px) {
   .directory-container {
@@ -389,9 +346,6 @@ ion-content {
   }
 }
 
-// ===================================
-// ACCESSIBILITY ENHANCEMENTS
-// ===================================
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -400,15 +354,6 @@ ion-content {
     transition-duration: 0.01ms !important;
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  // Dark mode support can be added here
-  // Currently maintaining light theme for corporate consistency
-}
-
-// ===================================
-// PRINT STYLES
-// ===================================
 
 @media print {
   .business-card {
