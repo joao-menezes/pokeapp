@@ -1,4 +1,3 @@
-// src/app/core/services/favorites.service.ts
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 

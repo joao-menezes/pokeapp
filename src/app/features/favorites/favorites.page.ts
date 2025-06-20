@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule, Router } from '@angular/router';
 import { PokemonService } from '../../core/services/pokemon.service';
-import {FavoritesService} from "../../core/services/favorites.service";
+import { FavoritesService } from '../../core/services/favorites.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-favorites',
@@ -29,19 +30,22 @@ export class FavoritesPage implements OnInit {
 
   async loadFavorites() {
     this.loading = true;
-    this.favoriteNames = await this.favoritesService.getAllFavorites();
-    this.favoriteDetails = [];
+    try {
+      this.favoriteNames = await this.favoritesService.getAllFavorites();
 
-    for (const name of this.favoriteNames) {
-      try {
-        const details = await this.pokemonService.getPokemonDetail(name).toPromise();
-        this.favoriteDetails.push(details);
-      } catch (error) {
-        console.error(`Erro ao carregar detalhes de ${name}`, error);
-      }
+      const detailsPromises = this.favoriteNames.map(name =>
+        firstValueFrom(this.pokemonService.getPokemonDetail(name))
+          .catch(error => {
+            console.error(`Erro ao carregar detalhes de ${name}`, error);
+            return null;
+          })
+      );
+
+      const results = await Promise.all(detailsPromises);
+      this.favoriteDetails = results.filter(detail => detail !== null);
+    } finally {
+      this.loading = false;
     }
-
-    this.loading = false;
   }
 
   openDetails(name: string) {
