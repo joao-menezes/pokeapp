@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule, Router } from '@angular/router';
 import { PokemonService } from '../../core/services/pokemon.service';
-import {FavoritesService} from "../../services/favorites.service";
+import {FavoritesService} from "../../core/services/favorites.service";
 
 @Component({
   selector: 'app-favorites',

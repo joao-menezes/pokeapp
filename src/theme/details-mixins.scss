@@ -1,0 +1,45 @@
+@import "details-variables";
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin card-base {
+  background: $white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  transition: all $transition-normal;
+}
+
+@mixin hover-lift {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin responsive-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @media (min-width: 768px) {
+    padding: 0 $spacing-2xl;
+  }
+}

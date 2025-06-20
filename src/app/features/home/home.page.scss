@@ -1,0 +1,427 @@
+@import '../../../theme/variables';
+@import '../../../theme/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  line-height: 1.6;
+  color: $gray-800;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ===================================
+// HEADER STYLES
+// ===================================
+
+.corporate-header {
+  background: $primary-brand-gradient;
+  box-shadow: $shadow-lg;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .brand-title {
+    font-family: $font-family-secondary;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $white;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-3xl;
+    }
+  }
+}
+
+// ===================================
+// CONTENT AREA
+// ===================================
+
+ion-content {
+  --background: linear-gradient(180deg, #{$gray-50} 0%, #{$white} 100%);
+  --padding-start: #{$spacing-lg};
+  --padding-end: #{$spacing-lg};
+  --padding-top: #{$spacing-xl};
+  --padding-bottom: #{$spacing-xl};
+
+  @media (min-width: 768px) {
+    --padding-start: #{$spacing-2xl};
+    --padding-end: #{$spacing-2xl};
+  }
+}
+
+// ===================================
+// BUSINESS DIRECTORY
+// ===================================
+
+.business-directory {
+  background: transparent;
+  padding: 0;
+
+  .directory-container {
+    @include responsive-container;
+    display: grid;
+    gap: $spacing-lg;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-xl;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// ===================================
+// BUSINESS CARD
+// ===================================
+
+.business-card {
+  @include card-base;
+  @include hover-lift;
+
+  --background: #{$white};
+  --border-radius: #{$radius-lg};
+  --padding-start: #{$spacing-xl};
+  --padding-end: #{$spacing-xl};
+  --padding-top: #{$spacing-xl};
+  --padding-bottom: #{$spacing-xl};
+  --min-height: 120px;
+
+  border: 1px solid $gray-200;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $primary-brand-gradient;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-normal;
+  }
+
+  &:hover {
+    border-color: $primary-brand-light;
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .profile-image {
+      transform: scale(1.1);
+    }
+
+    .contact-name {
+      color: $primary-brand;
+    }
+
+    .action-icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-md;
+  }
+}
+
+// ===================================
+// PROFILE THUMBNAIL
+// ===================================
+
+.profile-thumbnail {
+  --size: 64px;
+  --border-radius: #{$radius-xl};
+
+  margin-right: $spacing-lg;
+  position: relative;
+  overflow: hidden;
+  background: $gray-100;
+  border: 2px solid $gray-200;
+  transition: all $transition-normal;
+
+  @media (min-width: 768px) {
+    --size: 72px;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-normal;
+    filter: brightness(1.05) contrast(1.1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+
+  .business-card:hover & {
+    border-color: $primary-brand-light;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+// ===================================
+// CONTACT INFO
+// ===================================
+
+.contact-info {
+  flex: 1;
+  cursor: pointer;
+
+  .contact-name {
+    font-family: $font-family-secondary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $gray-800;
+    margin: 0;
+    line-height: 1.4;
+    transition: color $transition-normal;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+// ===================================
+// ACTION BUTTON
+// ===================================
+
+.action-button {
+  @include button-reset;
+
+  --background: transparent;
+  --background-hover: #{rgba($primary-brand, 0.1)};
+  --background-activated: #{rgba($primary-brand, 0.2)};
+  --color: #{$gray-600};
+  --color-hover: #{$primary-brand};
+  --border-radius: #{$radius-full};
+  --padding-start: #{$spacing-md};
+  --padding-end: #{$spacing-md};
+  --padding-top: #{$spacing-md};
+  --padding-bottom: #{$spacing-md};
+
+  margin-left: $spacing-md;
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .action-icon {
+    font-size: $font-size-xl;
+    transition: all $transition-normal;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-2xl;
+    }
+
+    &[name="heart"] {
+      color: $error;
+      animation: heartbeat 0.6s ease-in-out;
+    }
+
+    &[name="heart-outline"] {
+      color: $gray-400;
+    }
+  }
+}
+
+// ===================================
+// LOADING INDICATOR
+// ===================================
+
+.loading-indicator {
+  @include flex-center;
+
+  margin: $spacing-3xl auto;
+  --color: #{$primary-brand};
+  width: 48px;
+  height: 48px;
+
+  @media (min-width: 768px) {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+// ===================================
+// ANIMATIONS
+// ===================================
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ===================================
+// UTILITY CLASSES
+// ===================================
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.text-gradient-primary {
+  @include gradient-text($primary-brand-gradient);
+}
+
+.text-gradient-secondary {
+  @include gradient-text(linear-gradient(135deg, $secondary-brand 0%, $secondary-brand-light 100%));
+}
+
+// ===================================
+// RESPONSIVE ENHANCEMENTS
+// ===================================
+
+@media (min-width: 1200px) {
+  .directory-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .business-card {
+    --padding-start: #{$spacing-lg};
+    --padding-end: #{$spacing-lg};
+    --padding-top: #{$spacing-lg};
+    --padding-bottom: #{$spacing-lg};
+  }
+
+  .profile-thumbnail {
+    --size: 56px;
+    margin-right: $spacing-md;
+  }
+
+  .contact-name {
+    font-size: $font-size-base !important;
+  }
+
+  .action-icon {
+    font-size: $font-size-lg !important;
+  }
+}
+
+// ===================================
+// ACCESSIBILITY ENHANCEMENTS
+// ===================================
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  // Dark mode support can be added here
+  // Currently maintaining light theme for corporate consistency
+}
+
+// ===================================
+// PRINT STYLES
+// ===================================
+
+@media print {
+  .business-card {
+    box-shadow: none;
+    border: 1px solid $gray-300;
+    break-inside: avoid;
+  }
+
+  .action-button {
+    display: none;
+  }
+
+  .loading-indicator {
+    display: none;
+  }
+}

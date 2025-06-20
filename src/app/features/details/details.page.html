@@ -41,10 +41,18 @@
           <ion-label>Habilidades</ion-label>
           <ion-badge *ngFor="let h of pokemonDetails.abilities">{{ h.ability.name }}</ion-badge>
         </ion-item>
-        <ion-item>
-          <ion-label>Estatísticas</ion-label>
-          <ion-badge *ngFor="let s of pokemonDetails.stats">{{ s.stat.name }}: {{ s.base_stat }}</ion-badge>
+        <ion-item lines="none">
+          <ion-label>
+            <strong>Estatísticas</strong>
+          </ion-label>
+
+          <div class="statistics">
+            <ion-badge *ngFor="let s of pokemonDetails.stats">
+              {{ s.stat.name }}: {{ s.base_stat }}
+            </ion-badge>
+          </div>
         </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>

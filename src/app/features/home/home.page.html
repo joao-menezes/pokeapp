@@ -1,28 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Pokémons</ion-title>
+  <ion-toolbar class="corporate-header">
+    <ion-title class="brand-title">Pokémons</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content (ionScroll)="onScroll($event)" scrollEvents="true">
-  <ion-list>
-    <ion-item *ngFor="let pokemon of pokemons">
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + extractId(pokemon.url) + '.png'"
-          alt="{{ pokemon.name }}"
-        />
-      </ion-thumbnail>
-      <ion-label (click)="openDetails(pokemon.name)" class="pokemon-name">
-        {{ pokemon.name | titlecase }}
-      </ion-label>
-      <ion-button fill="clear" slot="end" (click)="toggleFavorite(pokemon.name)" color="danger">
-        <ion-icon
-          [name]="isFavorite(pokemon.name) ? 'heart' : 'heart-outline'"
-          aria-hidden="true"
-        ></ion-icon>
-      </ion-button>
-    </ion-item>
+  <ion-list class="business-directory">
+    <div class="directory-container">
+      <ion-item *ngFor="let pokemon of pokemons" class="business-card" (click)="openDetails(pokemon.name)">
+        <p>{{pokemon.length + 1}}</p>
+        <ion-thumbnail slot="start" class="profile-thumbnail">
+          <img
+            [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + extractId(pokemon.url) + '.png'"
+            alt="{{ pokemon.name }}"
+            class="profile-image"
+          />
+        </ion-thumbnail>
+        <ion-label class="contact-info">
+          <div class="contact-name">{{ pokemon.name | titlecase }}</div>
+        </ion-label>
+        <ion-button fill="clear" slot="end" (click)="toggleFavorite(pokemon.name)" class="action-button">
+          <ion-icon
+            [name]="isFavorite(pokemon.name) ? 'heart' : 'heart-outline'"
+            aria-hidden="true"
+            class="action-icon"
+          ></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
   </ion-list>
-  <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+  <ion-spinner *ngIf="loading" name="crescent" class="loading-indicator"></ion-spinner>
 </ion-content>
+
