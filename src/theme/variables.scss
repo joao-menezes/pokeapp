@@ -1,2 +1,55 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+$color-white: #ffffff;
+$color-black: #0f0f0f;
+$color-red: #ff0000;
+$color-gray-lightest: #f8f9fa;
+$color-gray-light: #e9ecef;
+$color-gray-medium: #6c757d;
+$color-gray-dark: #343a40;
+
+$primary-color: $color-red;
+$accent-color: $color-red;
+$text-color: $color-gray-dark;
+$light-text-color: $color-white;
+$caption-color: $color-gray-medium;
+$bg-color: $color-white;
+$body-bg-color: $color-gray-lightest;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+$spacing-unit-xs: $spacing-xs;
+$spacing-unit-sm: $spacing-sm;
+$spacing-unit-md: $spacing-md;
+$spacing-unit-lg: $spacing-lg;
+$spacing-unit-xl: $spacing-xl;
+$spacing-unit-xxl: $spacing-2xl;
+$spacing-unit-xxxl: $spacing-2xl;
+
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+
+$border-radius: $radius-md;
+$shadow-none: none;
+$shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-card-initial: $shadow-subtle;
+$shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+$transition-speed-fast: 0.15s;
+$transition-speed-normal: 0.25s;
+$transition-speed-slow: 0.4s;
+$transition-ease-out: ease-out;
+$transition-ease-in-out: ease-in-out;
+
+$font-family-roboto: 'Roboto', sans-serif;
+
+$font-family-heading: $font-family-roboto;
+$font-family-body: $font-family-roboto;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+$overlay-bg: rgba($color-black, 0.05);

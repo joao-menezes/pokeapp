@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!loading; else loadingTpl">
+  <ion-list *ngIf="favoriteDetails.length > 0; else noFavTpl">
+    <ion-item *ngFor="let pokemon of favoriteDetails">
+      <ion-thumbnail slot="start">
+        <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+      </ion-thumbnail>
+      <ion-label (click)="openDetails(pokemon.name)" class="pokemon-name">
+        {{ pokemon.name | titlecase }}
+      </ion-label>
+      <ion-button fill="clear" slot="end" color="danger" (click)="toggleFavorite(pokemon.name)">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ng-template #loadingTpl>
+  <ion-spinner name="crescent"></ion-spinner>
+</ng-template>
+
+<ng-template #noFavTpl>
+  <div class="ion-text-center ion-padding">
+    Nenhum Pokémon favorito adicionado.
+  </div>
+</ng-template>
