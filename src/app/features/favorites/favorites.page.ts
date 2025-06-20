@@ -1,4 +1,3 @@
-// src/app/features/favorites/favorites.page.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -34,7 +33,6 @@ export class FavoritesPage implements OnInit {
     this.favoriteDetails = [];
 
     for (const name of this.favoriteNames) {
-      // Buscar dados completos para cada favorito
       try {
         const details = await this.pokemonService.getPokemonDetail(name).toPromise();
         this.favoriteDetails.push(details);

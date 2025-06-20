@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule, Router } from '@angular/router';
 import { PokemonService } from '../../core/services/pokemon.service';
 import {FavoritesService} from "../../core/services/favorites.service";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,9 @@ import {FavoritesService} from "../../core/services/favorites.service";
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule],
+    RouterModule,
+    FormsModule
+  ],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss']
 })
@@ -20,6 +23,7 @@ export class HomePage implements OnInit {
   limit = 20;
   offset = 0;
   loading = false;
+  searchTerm: string = '';
 
   constructor(
     private pokemonService: PokemonService,
@@ -42,6 +46,14 @@ export class HomePage implements OnInit {
       },
       error: () => (this.loading = false)
     });
+  }
+
+  get filteredPokemons() {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) return this.pokemons;
+    return this.pokemons.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(term)
+    );
   }
 
   isFavorite(name: string): boolean {

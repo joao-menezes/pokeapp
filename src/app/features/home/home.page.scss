@@ -50,6 +50,38 @@ body {
   }
 }
 
+ion-searchbar.searchbar-input {
+  --background: #ffffff;
+  --color: #000000;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+  margin-left: 8px;
+  width: 50%;
+  min-width: 180px;
+}
+
+.no-results-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  color: var(--ion-color-medium);
+  text-align: center;
+  gap: 8px;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .no-results-icon {
+    font-size: 48px;
+    color: var(--ion-color-medium);
+  }
+}
+
+
 ion-content {
   --background: linear-gradient(180deg, #{$gray-50} 0%, #{$white} 100%);
   --padding-start: #{$spacing-lg};
@@ -315,6 +347,58 @@ ion-content {
 
 .text-gradient-secondary {
   @include gradient-text(linear-gradient(135deg, $secondary-brand 0%, $secondary-brand-light 100%));
+}
+
+.favorite-button {
+  @include button-reset;
+
+  --background: transparent;
+  --background-hover: #{rgba($error, 0.08)};
+  --background-activated: #{rgba($error, 0.15)};
+  --color: #{$accent-color};
+  --color-hover: #{$error};
+  --border-radius: #{$radius-full};
+  --padding-start: #{$spacing-md};
+  --padding-end: #{$spacing-md};
+  --padding-top: #{$spacing-md};
+  --padding-bottom: #{$spacing-md};
+
+  margin-left: $spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform $transition-normal, color $transition-normal;
+  position: absolute;
+  top: -10px;
+  left: 165px;
+  z-index: 9;
+
+  &:hover {
+    transform: scale(1.05);
+    color: $error;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .favorite-icon {
+    font-size: $font-size-xl;
+    transition: transform $transition-normal;
+
+    @media (min-width: 768px) {
+      font-size: $font-size-2xl;
+    }
+
+    &[name='heart'] {
+      color: $error;
+      animation: heartbeat 0.6s ease-in-out;
+    }
+
+    &[name='heart-outline'] {
+      color: $gray-400;
+    }
+  }
 }
 
 
